@@ -37,6 +37,12 @@ class User{
 
 		return $mass;
 	}
+	/*Метод получения пользователя по id*/
+	public function GetUserByID($id){
+		if($result = $this->conn->query("SELECT * FROM `ywm_users` WHERE `id` = '{$id}'")){
+			return $result->fetch_assoc();
+		}else return false;
+	}
 	/*Метод добавления пользователя в базу*/
 	public function AddUser($login, $pass, $name){
 		$this->login = htmlspecialchars($login);
@@ -46,6 +52,22 @@ class User{
 		if($this->conn->query("INSERT INTO `ywm_users` (`login`, `pass`, `name`) VALUES ('{$this->login}', '{$this->hash}', '{$this->name}')")){
 			return true;
 		}else return false;	
+	}
+	/*Метод обновления данных о пользователе*/
+	public function UpdateUser($id, $login, $pass, $name){
+		$this->login = htmlspecialchars($login);
+		$this->hash = md5($pass);
+		$this->name = htmlspecialchars($name);
+
+		if($this->conn->query("UPDATE `ywm_users` SET `login` = '{$this->login}', `pass` = '{$this->hash}', `name` = '{$this->name}' WHERE `id` = '{$id}'")){
+			return true;
+		}else return false;		
+	}
+	/*Метод удаления пользователя*/
+	public function DeleteUser($id){
+		if($this->conn->query("DELETE FROM `ywm_users` WHERE `id` = '{$id}'")){
+			return true;	
+		}else return false;
 	}
 }
 ?>

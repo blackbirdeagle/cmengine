@@ -2,6 +2,8 @@
 <html>
 <head>
 	<link rel = "stylesheet" type = "text/css" href = "/admin/static/css/bootstrap.min.css" />
+	<script type = "text/javascript" src = "/admin/static/js/jquery.min.js"></script>
+	<script type = "text/javascript" src = "/admin/static/js/script.js"></script>
 	<title>Список пользователей</title>
 </head>	
 <body>
@@ -23,7 +25,7 @@
 						<th>№</th>
 						<th>Логин</th>
 						<th>Имя</th>
-						<th>Дата добавления</th>
+						<th>Дата добавления/обновления</th>
 						<th>Действия</th>
 					</tr>	
 					<?foreach($result as $key => $row):?>
@@ -32,7 +34,7 @@
 							<td><?=$row["login"]?></td>
 							<td><?=$row["name"]?></td>	
 							<td><?=$row["created_at"]?></td>
-							<td><a href = "/admin/users/edit.php?id=<?=$row['id']?>">Редактировать</a></td>
+							<td><a href = "/admin/users/edit.php?id=<?=$row['id']?>">Редактировать</a> / <a href = "javascript:void(0);" onclick = "deleteUser('<?=$row['id']?>')">Удалить</a></td>
 						</tr>						
 						<?$item++;?>
 					<?endforeach;?>
