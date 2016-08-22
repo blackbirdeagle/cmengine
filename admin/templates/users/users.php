@@ -26,17 +26,16 @@
 						<th>Дата добавления</th>
 						<th>Действия</th>
 					</tr>	
-
-					<?while($row = $result_set->fetch_assoc()):?>
+					<?foreach($result as $key => $row):?>
 						<tr>
 							<td><?=$item?></td>
 							<td><?=$row["login"]?></td>
 							<td><?=$row["name"]?></td>	
 							<td><?=$row["created_at"]?></td>
 							<td><a href = "/admin/users/edit.php?id=<?=$row['id']?>">Редактировать</a></td>
-						</tr>
+						</tr>						
 						<?$item++;?>
-					<?endwhile;?>
+					<?endforeach;?>
 				</table>
 				<a href = "/admin/users/add.php">Добавить пользователя</a>
 			</div>

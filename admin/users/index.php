@@ -1,5 +1,6 @@
 <?php
 	require_once($_SERVER["DOCUMENT_ROOT"]."/config/db.php");
+	require_once($_SERVER["DOCUMENT_ROOT"]."/admin/users/user.class.php");
 
 	if($_SESSION["USER"] == ""){
 		header("Location: /admin/login.php");
@@ -7,7 +8,8 @@
 		$enter = 'Здравствуйте '.$_SESSION["USER"];
 	}
 
-	$result_set = $mysqli->query("SELECT * FROM `".PREFIX."users`");
+	$user = new User($mysqli);
+	$result = $user->GetUsers();
 	$item = 1;
 
 	require_once($_SERVER["DOCUMENT_ROOT"]."/admin/templates/users/users.php");
