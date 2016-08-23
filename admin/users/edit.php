@@ -1,6 +1,6 @@
 <?php
 	require_once($_SERVER["DOCUMENT_ROOT"]."/config/db.php");
-	require_once($_SERVER["DOCUMENT_ROOT"]."/admin/users/user.class.php");	
+	require_once($_SERVER["DOCUMENT_ROOT"]."/core/user.class.php");
 
 	if($_SESSION["USER"] == ""){
 		header("Location: /admin/login.php");
@@ -24,6 +24,6 @@
 
 		header("Location: /admin/users/");		
 	}
-
-	require_once($_SERVER["DOCUMENT_ROOT"]."/admin/templates/users/edit.php");
+	$title = 'Редактирование пользователя - '.$userGet["name"];
+	require_once($_SERVER["DOCUMENT_ROOT"]."/templates/admin/users/edit.php");
 ?>

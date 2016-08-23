@@ -13,6 +13,7 @@
 		header("Location: /admin/login.php");
 	}else{
 		$enter = 'Здравствуйте '.$_SESSION["USER"];
+		$title = 'Административная панель';
 	}
-	require_once($_SERVER["DOCUMENT_ROOT"]."/admin/templates/index.php");
+	require_once($_SERVER["DOCUMENT_ROOT"]."/templates/admin/index.php");
 ?>
