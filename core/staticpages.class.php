@@ -44,7 +44,7 @@ class CStaticPages{
 
 		return $mass;		
 	}
-	/*Метод получения пользователя по id*/
+	/*Метод получения статической по id*/
 	public function GetPageByID($id){
 		if($result = $this->conn->query("SELECT * FROM `ywm_pages` WHERE `id` = '{$id}'")){
 			return $result->fetch_assoc();

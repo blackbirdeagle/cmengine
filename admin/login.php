@@ -1,12 +1,12 @@
 <?php
 
 require_once($_SERVER["DOCUMENT_ROOT"]."/config/db.php");
-require_once($_SERVER["DOCUMENT_ROOT"]."/admin/users/user.class.php");
+require_once($_SERVER["DOCUMENT_ROOT"]."/core/user.class.php");
 
 $error = "";
 if(isset($_POST["auth"])){
 
-	$user = new User($mysqli);
+	$user = new CUser($mysqli);
 
 	if($user->ValidateUser($_POST["login"], $_POST["pass"])){
 		$_SESSION["USER"] = $user->name;
@@ -17,5 +17,5 @@ if(isset($_POST["auth"])){
 	}	
 }
 
-require_once($_SERVER["DOCUMENT_ROOT"]."/admin/templates/login.php");
+require_once($_SERVER["DOCUMENT_ROOT"]."/templates/admin/login.php");
 ?>

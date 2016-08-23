@@ -23,3 +23,16 @@ function deletePage(id){
 		});
 	}	
 }
+
+function deleteService(id){
+	if(confirm("Вы действительно хотите удалить услугу?")){
+		$.post("/admin/services/delete.php", {ID: id}, function(data){
+			if(data == "1"){
+				alert("Услуга успешно удалена!");
+			}else if(data == "0"){
+				alert("При удалении услуги возникла ошибка!");
+			}
+			document.location.href = document.location.href;
+		});
+	}	
+}
