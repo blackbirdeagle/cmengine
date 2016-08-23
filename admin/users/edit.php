@@ -8,7 +8,7 @@
 		$enter = 'Здравствуйте '.$_SESSION["USER"];
 	}
 
-	$user = new User($mysqli);
+	$user = new CUser($mysqli);
 	if(isset($_GET["id"])){
 		$userGet = $user->GetUserByID($_GET["id"]);
 	}
@@ -19,7 +19,6 @@
 		$pass = $_POST["USER_PASS"];
 		$name = $_POST["USER_NAME"];
 
-		$user = new User($mysqli);
 		$user->UpdateUser($id, $login, $pass, $name);
 
 		header("Location: /admin/users/");		

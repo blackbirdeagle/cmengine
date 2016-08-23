@@ -8,7 +8,7 @@
 		$enter = 'Здравствуйте '.$_SESSION["USER"];
 	}
 
-	$user = new User($mysqli);
+	$user = new CUser($mysqli);
 	$result = $user->GetUsers();
 	$item = 1;
 	$title = 'Административная панель - список пользователей';

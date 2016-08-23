@@ -1,5 +1,5 @@
 <?php
-class User{
+class CUser{
 	public $login;
 	public $hash;
 	public $name;
@@ -7,9 +7,9 @@ class User{
 
 	public function __construct($connect/*дескриптор подключения*/){
 		$this->login = NULL;
-		$this->hash = NULL;
-		$this->name = NULL;
-		$this->conn = $connect;
+		$this->hash  = NULL;
+		$this->name  = NULL;
+		$this->conn  = $connect;
 	}
 	/*Проверка существования пользователя в базе*/
 	public function ValidateUser($login, $password){

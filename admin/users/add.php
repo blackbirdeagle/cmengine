@@ -13,7 +13,7 @@
 		$pass = $_POST["USER_PASS"];
 		$name = $_POST["USER_NAME"];
 
-		$user = new User($mysqli);
+		$user = new CUser($mysqli);
 		$user->AddUser($login, $pass, $name);
 
 		header("Location: /admin/users/");

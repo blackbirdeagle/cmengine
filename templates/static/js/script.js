@@ -10,3 +10,16 @@ function deleteUser(id){
 		});
 	}
 }
+
+function deletePage(id){
+	if(confirm("Вы действительно хотите удалить страницу?")){
+		$.post("/admin/staticpage/delete.php", {ID: id}, function(data){
+			if(data == "1"){
+				alert("Страница успешно удалена!");
+			}else if(data == "0"){
+				alert("При удалении страницы возникла ошибка!");
+			}
+			document.location.href = document.location.href;
+		});
+	}	
+}
