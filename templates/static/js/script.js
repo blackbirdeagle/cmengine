@@ -36,3 +36,16 @@ function deleteService(id){
 		});
 	}	
 }
+
+function deleteFaq(id){
+	if(confirm("Вы действительно хотите удалить вопрос?")){
+		$.post("/admin/faq/delete.php", {ID: id}, function(data){
+			if(data == "1"){
+				alert("Вопрос успешно удален!");
+			}else if(data == "0"){
+				alert("При удалении вопроса возникла ошибка!");
+			}
+			document.location.href = document.location.href;
+		});
+	}	
+}
