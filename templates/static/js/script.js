@@ -49,3 +49,16 @@ function deleteFaq(id){
 		});
 	}	
 }
+
+function deleteCitata(id){
+	if(confirm("Вы действительно хотите удалить цитату?")){
+		$.post("/admin/citats/delete.php", {ID: id}, function(data){
+			if(data == "1"){
+				alert("Цитата успешно удалена!");
+			}else if(data == "0"){
+				alert("При удалении цитаты возникла ошибка!");
+			}
+			document.location.href = document.location.href;
+		});
+	}	
+}
