@@ -9,7 +9,7 @@
 	}
 
 	$pages = new CStaticPages($mysqli);
-	$result = $pages->GetPages();
+	$result = $pages->GetPages(0);
 	$item = 1;
 	$title = 'Административная панель - статические страницы';
 	require_once($_SERVER["DOCUMENT_ROOT"]."/templates/admin/staticpage/pages.php");

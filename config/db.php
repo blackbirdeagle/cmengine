@@ -9,4 +9,7 @@ define("PREFIX", "ywm_");
 $mysqli->query("SET NAMES 'utf8'");
 
 session_start();
+
+require_once($_SERVER["DOCUMENT_ROOT"]."/core/functions.php");
+require_once($_SERVER["DOCUMENT_ROOT"]."/core/mysql.class.php");
 ?>

@@ -1,15 +1,15 @@
 <?php
-class CUser{
+class CUser extends CMySQL{
 	public $login;
 	public $hash;
 	public $name;
-	public $conn;
 
 	public function __construct($connect/*дескриптор подключения*/){
+		parent::__construct($connect);
+		$this->table  = PREFIX."users";
 		$this->login = NULL;
 		$this->hash  = NULL;
 		$this->name  = NULL;
-		$this->conn  = $connect;
 	}
 	/*Проверка существования пользователя в базе*/
 	public function ValidateUser($login, $password){
@@ -27,21 +27,12 @@ class CUser{
 		}else return false;
 	}
 	/*Метод получения всех пользователей в виде ассоциативного массива*/
-	public function GetUsers(){
-		$mass = array();
-		if($result = $this->conn->query("SELECT * FROM `ywm_users`")){
-			while($row = $result->fetch_assoc()){
-				$mass[] = $row;	
-			}
-		}
-
-		return $mass;
+	public function GetUsers($stat){
+		return parent::GetRecords($this->table, $stat);
 	}
 	/*Метод получения пользователя по id*/
 	public function GetUserByID($id){
-		if($result = $this->conn->query("SELECT * FROM `ywm_users` WHERE `id` = '{$id}'")){
-			return $result->fetch_assoc();
-		}else return false;
+		return parent::GetByID($this->table, $id);
 	}
 	/*Метод добавления пользователя в базу*/
 	public function AddUser($login, $pass, $name){
@@ -49,9 +40,11 @@ class CUser{
 		$this->hash = md5($pass);
 		$this->name = htmlspecialchars($name);	
 
-		if($this->conn->query("INSERT INTO `ywm_users` (`login`, `pass`, `name`) VALUES ('{$this->login}', '{$this->hash}', '{$this->name}')")){
-			return true;
-		}else return false;	
+		$fields[0] = array('login', $this->login);
+		$fields[1] = array('pass', $this->hash);
+		$fields[2] = array('name', $this->name);
+
+		return parent::AddRecord($this->table, $fields);	
 	}
 	/*Метод обновления данных о пользователе*/
 	public function UpdateUser($id, $login, $pass, $name){
@@ -59,15 +52,15 @@ class CUser{
 		$this->hash = md5($pass);
 		$this->name = htmlspecialchars($name);
 
-		if($this->conn->query("UPDATE `ywm_users` SET `login` = '{$this->login}', `pass` = '{$this->hash}', `name` = '{$this->name}' WHERE `id` = '{$id}'")){
-			return true;
-		}else return false;		
+		$fields[0] = array('login', $this->login);
+		$fields[1] = array('pass', $this->hash);
+		$fields[2] = array('name', $this->name);
+
+		return parent::UpdateRecord($this->table, $id, $fields);		
 	}
 	/*Метод удаления пользователя*/
 	public function DeleteUser($id){
-		if($this->conn->query("DELETE FROM `ywm_users` WHERE `id` = '{$id}'")){
-			return true;	
-		}else return false;
+		return parent::delete($this->table, $id);
 	}
 }
 ?>

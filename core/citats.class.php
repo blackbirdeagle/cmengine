@@ -1,12 +1,13 @@
 <?php
-class CCitats{
-	public $conn;
-	public $text;
-	public $author;
-	public $block;
+class CCitats extends CMySQL{
+	private $table;
+	private $text;
+	private $author;
+	private $block;
 
 	public function __construct($connect/*дескриптор подключения*/){
-		$this->conn   = $connect;
+		parent::__construct($connect);
+		$this->table  = PREFIX."citats";
 		$this->text   = NULL;
 		$this->author = NULL;
 		$this->block  = NULL;
@@ -16,26 +17,19 @@ class CCitats{
 		$this->text   = htmlspecialchars($text);
 		$this->author = htmlspecialchars($author);
 
-		if($this->conn->query("INSERT INTO `ywm_citats` (`text`, `author`, `block`) VALUES ('{$this->text}', '{$this->author}', '0')")){
-			return true;	
-		}else return false;
+		$fields[0] = array("text", $this->text);
+		$fields[1] = array("author", $this->author);
+		$fields[2] = array("block", 0);
+
+		return parent::AddRecord($this->table, $fields);
 	}
 	/*Метод получения всех цитат ввиде ассоциативного массива*/
-	public function GetCitats(){
-		$mass = array();
-		if($result = $this->conn->query("SELECT * FROM `ywm_citats`")){
-			while($row = $result->fetch_assoc()){
-				$mass[] = $row;	
-			}
-		}
-
-		return $mass;		
+	public function GetCitats($stat){
+		return parent::GetRecords($this->table, $stat);		
 	}	
 	/*Метод получения цитаты по id*/
 	public function GetCitataByID($id){
-		if($result = $this->conn->query("SELECT * FROM `ywm_citats` WHERE `id` = '{$id}'")){
-			return $result->fetch_assoc();
-		}else return false;		
+		return parent::GetByID($this->table, $id);	
 	}
 	/*Метод обновления данных цитаты*/
 	public function UpdateCitata($id, $text, $author, $block){
@@ -43,15 +37,15 @@ class CCitats{
 		$this->author = htmlspecialchars($author);
 		$this->block  = $block;
 
-		if($this->conn->query("UPDATE `ywm_citats` SET `text` = '{$this->text}', `author` = '{$this->author}', `block` = '{$this->block}' WHERE `id` = '{$id}'")){
-			return true;	
-		}else return false;				
+		$fields[0] = array("text", $this->text);
+		$fields[1] = array("author", $this->author);
+		$fields[2] = array("block", $this->block);
+
+		return parent::UpdateRecord($this->table, $id, $fields);			
 	}
 	/*Метод удаления цитаты*/
 	public function DeleteCitata($id){
-		if($this->conn->query("DELETE FROM `ywm_citats` WHERE `id` = '{$id}'")){
-			return true;	
-		}else return false;		
+		return parent::delete($this->table, $id);		
 	}
 }
 ?>

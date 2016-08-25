@@ -1,13 +1,13 @@
 <?php
-class CFaq{
+class CFaq extends CMySQL{
 	public $quest;
 	public $author;
 	public $answer;
 	public $block;
-	public $conn;
 
 	public function __construct($connect/*дескриптор подключения*/){
-		$this->conn   = $connect;
+		parent::__construct($connect);
+		$this->table  = PREFIX."faq";
 		$this->quest  = NULL;
 		$this->author = NULL;
 		$this->answer = NULL;
@@ -20,26 +20,20 @@ class CFaq{
 		$this->author = htmlspecialchars($author);
 		$this->answer = htmlspecialchars($answer);
 
-		if($this->conn->query("INSERT INTO `ywm_faq` (`quest`, `author`, `answer`, `block`) VALUES ('{$this->quest}', '{$this->author}', '{$this->answer}', '0')")){
-			return true;	
-		}else return false;
+		$fields[0] = array("quest", $this->quest);
+		$fields[1] = array("author", $this->author);
+		$fields[2] = array("answer", $this->answer);
+		$fields[3] = array("block", 0);
+
+		return parent::AddRecord($this->table, $fields);
 	}
 	/*Метод выборки всех вопросов ввиде ассоциативного массива*/
-	public function GetFaq(){
-		$mass = array();
-		if($result = $this->conn->query("SELECT * FROM `ywm_faq`")){
-			while($row = $result->fetch_assoc()){
-				$mass[] = $row;	
-			}
-		}
-
-		return $mass;		
+	public function GetFaq($stat){
+		return parent::GetRecords($this->table, $stat);		
 	}
 	/*Метод получения вопроса по id*/
 	public function GetFaqByID($id){
-		if($result = $this->conn->query("SELECT * FROM `ywm_faq` WHERE `id` = '{$id}'")){
-			return $result->fetch_assoc();
-		}else return false;		
+		return parent::GetByID($this->table, $id);	
 	}
 	/*Метод обновления данных вопроса*/
 	public function UpdateFaq($id, $quest, $author, $answer, $block){
@@ -48,15 +42,16 @@ class CFaq{
 		$this->answer = htmlspecialchars($answer);
 		$this->block  = $block;
 
-		if($this->conn->query("UPDATE `ywm_faq` SET `quest` = '{$this->quest}', `author` = '{$this->author}', `answer` = '{$this->answer}', `block` = '{$this->block}' WHERE `id` = '{$id}'")){
-			return true;	
-		}else return false;				
+		$fields[0] = array("quest", $this->quest);
+		$fields[1] = array("author", $this->author);
+		$fields[2] = array("answer", $this->answer);
+		$fields[3] = array("block", $this->block);
+
+		return parent::UpdateRecord($this->table, $id, $fields);				
 	}
 	/*Метод удаления вопроса*/
 	public function DeleteFaq($id){
-		if($this->conn->query("DELETE FROM `ywm_faq` WHERE `id` = '{$id}'")){
-			return true;	
-		}else return false;		
+		return parent::delete($this->table, $id);		
 	}
 }
 ?>

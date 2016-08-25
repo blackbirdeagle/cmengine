@@ -1,5 +1,5 @@
 <?php
-class CStaticPages{
+class CStaticPages extends CMySQL{
 	public $seo_title;
 	public $seo_keywords;
 	public $seo_desc;
@@ -7,10 +7,10 @@ class CStaticPages{
 	public $h1;
 	public $text;
 	public $block;
-	public $conn;
 
 	public function __construct($connect/*дескриптор подключения*/){
-		$this->conn         = $connect;
+		parent::__construct($connect);
+		$this->table  = PREFIX."pages";
 		$this->seo_title    = NULL;
 		$this->seo_keywords = NULL;
 		$this->seo_desc     = NULL;
@@ -29,26 +29,23 @@ class CStaticPages{
 		$this->h1           = htmlspecialchars($h1);
 		$this->text         = htmlspecialchars($text);
 
-		if($this->conn->query("INSERT INTO `ywm_pages` (`seo_title`, `seo_keywords`, `seo_desc`, `seo_key`, `h1`, `text`, `block`) VALUES ('{$this->seo_title}', '{$this->seo_keywords}', '{$this->seo_desc}', '{$this->seo_key}', '{$this->h1}', '{$this->text}', '0')")){
-			return true;	
-		}else return false;
+		$fields[0] = array("seo_title", $this->seo_title);
+		$fields[1] = array("seo_keywords", $this->seo_keywords);
+		$fields[2] = array("seo_desc", $this->seo_desc);
+		$fields[3] = array("seo_key", $this->seo_key);
+		$fields[4] = array("h1", $this->h1);
+		$fields[5] = array("text", $this->text);
+		$fields[6] = array("block", 0);
+
+		return parent::AddRecord($this->table, $fields);
 	}
 	/*Метод получения всех статических страниц ввиде ассоциативного массива*/
-	public function GetPages(){
-		$mass = array();
-		if($result = $this->conn->query("SELECT * FROM `ywm_pages`")){
-			while($row = $result->fetch_assoc()){
-				$mass[] = $row;	
-			}
-		}
-
-		return $mass;		
+	public function GetPages($stat){
+		return parent::GetRecords($this->table, $stat);		
 	}
 	/*Метод получения статической по id*/
 	public function GetPageByID($id){
-		if($result = $this->conn->query("SELECT * FROM `ywm_pages` WHERE `id` = '{$id}'")){
-			return $result->fetch_assoc();
-		}else return false;		
+		return parent::GetByID($this->table, $id);		
 	}
 	/*Метод обновления данных статической страницы*/
 	public function UpdatePage($id, $title, $keywords, $desc, $key, $h1, $text, $block){
@@ -60,15 +57,19 @@ class CStaticPages{
 		$this->text         = htmlspecialchars($text);
 		$this->block        = $block;
 
-		if($this->conn->query("UPDATE `ywm_pages` SET `seo_title` = '{$this->seo_title}', `seo_keywords` = '{$this->seo_keywords}', `seo_desc` = '{$this->seo_desc}', `seo_key` = '{$this->seo_key}', `h1` = '{$this->h1}', `text` = '{$this->text}', `block` = '{$this->block}' WHERE `id` = '{$id}'")){
-			return true;	
-		}else return false;				
+		$fields[0] = array("seo_title", $this->seo_title);
+		$fields[1] = array("seo_keywords", $this->seo_keywords);
+		$fields[2] = array("seo_desc", $this->seo_desc);
+		$fields[3] = array("seo_key", $this->seo_key);
+		$fields[4] = array("h1", $this->h1);
+		$fields[5] = array("text", $this->text);
+		$fields[6] = array("block", $this->block);
+
+		return parent::UpdateRecord($this->table, $id, $fields);			
 	}
 	/*Метод удаления статической страницы*/
 	public function DeletePage($id){
-		if($this->conn->query("DELETE FROM `ywm_pages` WHERE `id` = '{$id}'")){
-			return true;	
-		}else return false;		
+		return parent::delete($this->table, $id);	
 	}
 }	
 ?>

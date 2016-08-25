@@ -9,7 +9,7 @@
 	}
 
 	$faq = new CFaq($mysqli);
-	$result = $faq->GetFaq();
+	$result = $faq->GetFaq(0);
 	$item = 1;
 	$title = 'Административная панель - вопрос/ответ';
 	require_once($_SERVER["DOCUMENT_ROOT"]."/templates/admin/faq/faq.php");
