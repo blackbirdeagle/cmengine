@@ -18,7 +18,6 @@
 		}else{
 			$error = "Ошибка добавления!";
 		}
-		//$error = $citata->AddCitata($text, $author);
 	}
 	$title = 'Административная панель - добавление цитаты';
 	require_once($_SERVER["DOCUMENT_ROOT"]."/templates/admin/citats/add.php");

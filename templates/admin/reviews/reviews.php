@@ -14,7 +14,7 @@
 			<table>
 				<tr>
 					<th>№</th>
-					<th>Цитата</th>
+					<th>Отзыв</th>
 					<th>Автор</th>
 					<th>Дата добавления/обновления</th>
 					<th>Действия</th>
@@ -25,12 +25,12 @@
 						<td><?=$row["text"]?></td>
 						<td><?=$row["author"]?></td>	
 						<td><?=$row["created_at"]?></td>
-						<td><a href = "/admin/citats/edit.php?id=<?=$row['id']?>">Редактировать</a> / <a href = "javascript:void(0);" onclick = "deleteCitata('<?=$row['id']?>')">Удалить</a></td>
+						<td><a href = "/admin/reviews/edit.php?id=<?=$row['id']?>">Редактировать</a> / <a href = "javascript:void(0);" onclick = "deleteReview('<?=$row['id']?>')">Удалить</a></td>
 					</tr>						
 					<?$item++;?>
 				<?endforeach;?>
 			</table>
-			<a href = "/admin/citats/add.php">Добавить цитату</a>
+			<a href = "/admin/reviews/add.php">Добавить отзыв</a>
 		</div>
 	</div>
 </div>

@@ -62,3 +62,16 @@ function deleteCitata(id){
 		});
 	}	
 }
+
+function deleteReview(id){
+	if(confirm("Вы действительно хотите удалить отзыв?")){
+		$.post("/admin/reviews/delete.php", {ID: id}, function(data){
+			if(data == "1"){
+				alert("Отзыв успешно удален!");
+			}else if(data == "0"){
+				alert("При удалении отзыва возникла ошибка!");
+			}
+			document.location.href = document.location.href;
+		});
+	}	
+}
