@@ -37,6 +37,11 @@ class CStaticPages extends CMySQL{
 		$fields[5] = array("text", $this->text);
 		$fields[6] = array("block", 0);
 
+		$rec_cnt = parent::RecCnt($this->table);
+
+		if($rec_cnt == 0) $fields[7] = array("sort", 1);
+		else $fields[7] = array("sort", parent::MaxSort($this->table) + 1);
+		
 		return parent::AddRecord($this->table, $fields);
 	}
 	/*Метод получения всех статических страниц ввиде ассоциативного массива*/
@@ -70,6 +75,14 @@ class CStaticPages extends CMySQL{
 	/*Метод удаления статической страницы*/
 	public function DeletePage($id){
 		return parent::delete($this->table, $id);	
+	}
+	/*Метод поднятия позиции страницы в списке по полю sort*/
+	public function PageUp($id){
+		return parent::RecUp($id, $this->table);
+	}
+	/*Метод опускуния позиции страницы в списке по полю sort*/
+	public function PageDown($id){
+		return parent::RecDown($id, $this->table);
 	}
 }	
 ?>

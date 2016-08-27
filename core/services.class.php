@@ -7,7 +7,7 @@ class CServices extends CMySQL{
 	public $h1;
 	public $text;
 	public $block;
-	public $conn;
+	private $sort;
 
 	public function __construct($connect/*дескриптор подключения*/){
 		parent::__construct($connect);
@@ -18,7 +18,8 @@ class CServices extends CMySQL{
 		$this->seo_key      = NULL;
 		$this->h1           = NULL;
 		$this->text         = NULL;
-		$this->block        = NULL;		
+		$this->block        = NULL;
+		$this->sort         = NULL;		
 	}
 
 	/*Метод добавления услуги*/
@@ -37,6 +38,11 @@ class CServices extends CMySQL{
 		$fields[4] = array("h1", $this->h1);
 		$fields[5] = array("text", $this->text);
 		$fields[6] = array("block", 0);
+
+		$rec_cnt = parent::RecCnt($this->table);
+		
+		if($rec_cnt == 0) $fields[7] = array("sort", 1);
+		else $fields[7] = array("sort", parent::MaxSort($this->table) + 1);
 
 		return parent::AddRecord($this->table, $fields);
 	}
@@ -71,6 +77,14 @@ class CServices extends CMySQL{
 	/*Метод удаления услуги*/
 	public function DeleteService($id){
 		return parent::delete($this->table, $id);	
+	}
+	/*Метод поднятия позиции услуги в списке по полю sort*/
+	public function ServiceUp($id){
+		return parent::RecUp($id, $this->table);
+	}
+	/*Метод опускуния позиции услуги в списке по полю sort*/
+	public function ServiceDown($id){
+		return parent::RecDown($id, $this->table);
 	}
 }
 ?>

@@ -18,6 +18,7 @@
 					<th>SEO-ключ</th>
 					<th>Дата добавления/обновления</th>
 					<th>Действия</th>
+					<th>Порядок</th>
 				</tr>	
 				<?foreach($result as $key => $row):?>
 					<tr>
@@ -26,6 +27,13 @@
 						<td><?=$row["seo_key"]?></td>	
 						<td><?=$row["created_at"]?></td>
 						<td><a href = "/admin/services/edit.php?id=<?=$row['id']?>">Редактировать</a> / <a href = "javascript:void(0);" onclick = "deleteService('<?=$row['id']?>')">Удалить</a></td>
+						<?if($item == 1):?>
+							<td><a href = "javascript:void(0);" onclick = "sortDown('<?=$row['id']?>', '<?=$table?>')">Вниз</a></td>
+						<?elseif($item == count($result)):?>
+							<td><a href = "javascript:void(0);" onclick = "sortUp('<?=$row['id']?>', '<?=$table?>')">Вверх</a></td>
+						<?else:?>
+							<td><a href = "javascript:void(0);" onclick = "sortUp('<?=$row['id']?>', '<?=$table?>')">Вверх</a> / <a href = "javascript:void(0);" onclick = "sortDown('<?=$row['id']?>', '<?=$table?>')">Вниз</a></td>
+						<?endif;?>
 					</tr>						
 					<?$item++;?>
 				<?endforeach;?>

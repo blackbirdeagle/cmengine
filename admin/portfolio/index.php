@@ -9,8 +9,9 @@
 	}
 
 	$portfolio = new CPortfolio($mysqli);
-	$result = $portfolio->GetPortfolio(0);
+	$result = $portfolio->GetPortfolio(2);
 	$item = 1;
+	$table = "portfolio";
 	$title = 'Административная панель - портфолио';
 	require_once($_SERVER["DOCUMENT_ROOT"]."/templates/admin/portfolio/portfolio.php");
 ?>

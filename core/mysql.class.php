@@ -1,6 +1,7 @@
 <?php
 /*
 	Ядерный класс выполнения операций над базой данных сайта
+	Содержит общие методы обработки данных таблиц	
 */
 
 class CMySQL{
@@ -56,7 +57,11 @@ class CMySQL{
 		$this->query = "";
 		$mass = array();
 		
-		($_stat == 0) ? $this->query = "SELECT * FROM `".$_tname."`" : $this->query = "SELECT * FROM `".$_tname."` WHERE `block` = '0'";
+		//($_stat == 0) ? $this->query = "SELECT * FROM `".$_tname."`" : $this->query = "SELECT * FROM `".$_tname."` WHERE `block` = '0'";
+
+		if($_stat == 0) $this->query = "SELECT * FROM `".$_tname."`";
+		else if($_stat == 1) $this->query = "SELECT * FROM `".$_tname."` WHERE `block` = '0'";
+		else if($_stat == 2) $this->query = "SELECT * FROM `".$_tname."` WHERE `block` = '0' ORDER BY `sort` ASC";
 
 		if($result = $this->conn->query($this->query)){
 			while($row = $result->fetch_assoc()){
@@ -77,6 +82,48 @@ class CMySQL{
 		if($result = $this->conn->query("SELECT * FROM `".$_tname."` WHERE `id` = '{$_id}'")){
 			return $result->fetch_assoc();
 		}else return false;			
+	}
+	/*Метод определяет количество записей в таблице*/
+	public function RecCnt($t_name){
+		if($result = $this->conn->query("SELECT COUNT(*) FROM `".$t_name."`")){
+			$row = $result->fetch_assoc();
+			return $row["COUNT(*)"];
+		}else return false;
+	}
+	/*Метод определения максимального значения поля sort*/
+	public function MaxSort($t_name){
+		if($result = $this->conn->query("SELECT MAX(`sort`) FROM `".$t_name."`")){
+			$row = $result->fetch_assoc();
+			return $row["MAX(`sort`)"];
+		}else return false;		
+	}
+	/*Метод поднятия позиции записи в списке по полю sort*/
+	public function RecUp($_id, $t_name){
+		$res1 = $this->conn->query("SELECT `sort` FROM `".$t_name."` WHERE `id` = '$_id'");
+		$row1 = $res1->fetch_assoc();
+		$sort1 = $row1["sort"];
+		$id1 = $_id;
+		$res2 = $this->conn->query("SELECT `id`, `sort` FROM `".$t_name."` WHERE `sort` < '{$row1["sort"]}' ORDER BY `sort` DESC LIMIT 0, 1");
+		$row2 = $res2->fetch_assoc();
+		$sort2 = $row2["sort"];
+		$id2 = $row2["id"];
+
+		$this->conn->query("UPDATE `".$t_name."` SET `sort` = '$sort2' WHERE `id` = '$id1'");
+		$this->conn->query("UPDATE `".$t_name."` SET `sort` = '$sort1' WHERE `id` = '$id2'");
+	}
+	/*Метод опускания позиции записи в списке по полю sort*/
+	public function RecDown($_id, $t_name){
+		$res1 = $this->conn->query("SELECT `sort` FROM `".$t_name."` WHERE `id` = '$_id'");
+		$row1 = $res1->fetch_assoc();
+		$sort1 = $row1["sort"];
+		$id1 = $_id;
+		$res2 = $this->conn->query("SELECT `id`, `sort` FROM `".$t_name."` WHERE `sort` > '{$row1["sort"]}' ORDER BY `sort` ASC LIMIT 0, 1");
+		$row2 = $res2->fetch_assoc();
+		$sort2 = $row2["sort"];
+		$id2 = $row2["id"];
+
+		$this->conn->query("UPDATE `".$t_name."` SET `sort` = '$sort2' WHERE `id` = '$id1'");
+		$this->conn->query("UPDATE `".$t_name."` SET `sort` = '$sort1' WHERE `id` = '$id2'");
 	}
 }
 ?>

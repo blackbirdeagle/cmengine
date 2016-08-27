@@ -25,6 +25,11 @@ class CFaq extends CMySQL{
 		$fields[2] = array("answer", $this->answer);
 		$fields[3] = array("block", 0);
 
+		$rec_cnt = parent::RecCnt($this->table);
+
+		if($rec_cnt == 0) $fields[4] = array("sort", 1);
+		else $fields[4] = array("sort", parent::MaxSort($this->table) + 1);
+
 		return parent::AddRecord($this->table, $fields);
 	}
 	/*Метод выборки всех вопросов ввиде ассоциативного массива*/
@@ -52,6 +57,14 @@ class CFaq extends CMySQL{
 	/*Метод удаления вопроса*/
 	public function DeleteFaq($id){
 		return parent::delete($this->table, $id);		
+	}
+	/*Метод поднятия позиции вопроса в списке по полю sort*/
+	public function FaqUp($id){
+		return parent::RecUp($id, $this->table);
+	}
+	/*Метод опускуния позиции вопроса в списке по полю sort*/
+	public function FaqDown($id){
+		return parent::RecDown($id, $this->table);
 	}
 }
 ?>

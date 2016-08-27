@@ -88,3 +88,15 @@ function deletePortfolio(id){
 		});
 	}	
 }
+
+function sortUp(id, table){
+	$.post("/admin/" + table + "/sort.php", {ID: id, TYPE: 'UP'}, function(data){
+		document.location.href = document.location.href;
+	});
+}
+
+function sortDown(id, table){
+	$.post("/admin/" + table + "/sort.php", {ID: id, TYPE: 'DOWN'}, function(data){
+		document.location.href = document.location.href;
+	});
+}

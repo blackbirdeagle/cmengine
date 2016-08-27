@@ -26,6 +26,11 @@ class CPortfolio extends CMySQL{
 		$fields[1] = array("name", $this->name);
 		$fields[2] = array("block", 0);
 
+		$rec_cnt = parent::RecCnt($this->table);
+
+		if($rec_cnt == 0) $fields[3] = array("sort", 1);
+		else $fields[3] = array("sort", parent::MaxSort($this->table) + 1);
+
 		return parent::AddRecord($this->table, $fields);
 	}
 	/*Метод получения работы из портфолио по id*/
@@ -49,6 +54,14 @@ class CPortfolio extends CMySQL{
 		$work = parent::GetByID($this->table, $id);
 		unlink($_SERVER["DOCUMENT_ROOT"].$work["image"]);
 		return parent::delete($this->table, $id);		
+	}
+	/*Метод поднятия позиции работы в списке по полю sort*/
+	public function PortfolioUp($id){
+		return parent::RecUp($id, $this->table);
+	}
+	/*Метод опускуния позиции работы в списке по полю sort*/
+	public function PortfolioDown($id){
+		return parent::RecDown($id, $this->table);
 	}
 }
 ?>
