@@ -75,3 +75,16 @@ function deleteReview(id){
 		});
 	}	
 }
+
+function deletePortfolio(id){
+	if(confirm("Вы действительно хотите удалить работу из портфолио?")){
+		$.post("/admin/portfolio/delete.php", {ID: id}, function(data){
+			if(data == "1"){
+				alert("Работа успешно удалена!");
+			}else if(data == "0"){
+				alert("При удалении работы возникла ошибка!");
+			}
+			document.location.href = document.location.href;
+		});
+	}	
+}
