@@ -2,11 +2,7 @@
 	require_once($_SERVER["DOCUMENT_ROOT"]."/config/db.php");
 	require_once($_SERVER["DOCUMENT_ROOT"]."/core/citats.class.php");
 
-	if($_SESSION["USER"] == ""){
-		header("Location: /admin/login.php");
-	}else{
-		$enter = 'Здравствуйте '.$_SESSION["USER"];
-	}
+	require_once($_SERVER["DOCUMENT_ROOT"]."/admin/authcontrol.php");
 
 	$citata = new CCitats($mysqli);
 	if(isset($_GET["id"])){
