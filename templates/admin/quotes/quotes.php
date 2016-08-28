@@ -25,12 +25,12 @@
 						<td><?=$row["text"]?></td>
 						<td><?=$row["author"]?></td>	
 						<td><?=$row["created_at"]?></td>
-						<td><a href = "/admin/citats/edit.php?id=<?=$row['id']?>">Редактировать</a> / <a href = "javascript:void(0);" onclick = "deleteCitata('<?=$row['id']?>')">Удалить</a></td>
+						<td><a href = "/admin/quotes/edit.php?id=<?=$row['id']?>">Редактировать</a> / <a href = "javascript:void(0);" onclick = "deleteQuote('<?=$row['id']?>')">Удалить</a></td>
 					</tr>						
 					<?$item++;?>
 				<?endforeach;?>
 			</table>
-			<a href = "/admin/citats/add.php">Добавить цитату</a>
+			<a href = "/admin/quotes/add.php">Добавить цитату</a>
 		</div>
 	</div>
 </div>

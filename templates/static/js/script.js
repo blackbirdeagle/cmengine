@@ -50,9 +50,9 @@ function deleteFaq(id){
 	}	
 }
 
-function deleteCitata(id){
+function deleteQuote(id){
 	if(confirm("Вы действительно хотите удалить цитату?")){
-		$.post("/admin/citats/delete.php", {ID: id}, function(data){
+		$.post("/admin/quotes/delete.php", {ID: id}, function(data){
 			if(data == "1"){
 				alert("Цитата успешно удалена!");
 			}else if(data == "0"){

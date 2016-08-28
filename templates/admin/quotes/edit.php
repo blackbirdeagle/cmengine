@@ -10,8 +10,8 @@
 		<div class = "col-md-3 left-sidebar">
 			<?php require_once($_SERVER["DOCUMENT_ROOT"]."/templates/admin/blocks/left_menu.php");?>
 		</div>
-		<div class = "col-md-9"><?=$error?>
-			<?php require_once($_SERVER["DOCUMENT_ROOT"]."/templates/admin/blocks/forms/addfaq.php");?>
+		<div class = "col-md-9">
+			<?php require_once($_SERVER["DOCUMENT_ROOT"]."/templates/admin/blocks/forms/editquote.php");?>
 		</div>
 	</div>
 </div>	

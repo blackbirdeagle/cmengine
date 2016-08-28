@@ -5,5 +5,5 @@
 	<li><a href = "/admin/portfolio/">Портфолио</a></li>
 	<li><a href = "/admin/reviews/">Отзывы</a></li>
 	<li><a href = "/admin/faq/">Вопрос/Ответ</a></li>
-	<li><a href = "/admin/citats/">Цитатник</a></li>
+	<li><a href = "/admin/quotes/">Цитатник</a></li>
 </ul>

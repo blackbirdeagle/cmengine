@@ -1,5 +1,5 @@
 <?php
-class CCitats extends CMySQL{
+class CQuotes extends CMySQL{
 	private $table;
 	private $text;
 	private $author;
@@ -7,13 +7,13 @@ class CCitats extends CMySQL{
 
 	public function __construct($connect/*дескриптор подключения*/){
 		parent::__construct($connect);
-		$this->table  = PREFIX."citats";
+		$this->table  = PREFIX."quotes";
 		$this->text   = NULL;
 		$this->author = NULL;
 		$this->block  = NULL;
 	}
 	/*Метод добавления цитаты*/
-	public function AddCitata($text, $author){
+	public function AddQuote($text, $author){
 		$this->text   = htmlspecialchars($text);
 		$this->author = htmlspecialchars($author);
 
@@ -24,15 +24,15 @@ class CCitats extends CMySQL{
 		return parent::AddRecord($this->table, $fields);
 	}
 	/*Метод получения всех цитат ввиде ассоциативного массива*/
-	public function GetCitats($stat){
+	public function GetQuotes($stat){
 		return parent::GetRecords($this->table, $stat);		
 	}	
 	/*Метод получения цитаты по id*/
-	public function GetCitataByID($id){
+	public function GetQuoteByID($id){
 		return parent::GetByID($this->table, $id);	
 	}
 	/*Метод обновления данных цитаты*/
-	public function UpdateCitata($id, $text, $author, $block){
+	public function UpdateQuote($id, $text, $author, $block){
 		$this->text   = htmlspecialchars($text);
 		$this->author = htmlspecialchars($author);
 		$this->block  = $block;
@@ -44,7 +44,7 @@ class CCitats extends CMySQL{
 		return parent::UpdateRecord($this->table, $id, $fields);			
 	}
 	/*Метод удаления цитаты*/
-	public function DeleteCitata($id){
+	public function DeleteQuote($id){
 		return parent::delete($this->table, $id);		
 	}
 }
