@@ -52,9 +52,14 @@ class CUser extends CMySQL{
 		$this->hash = md5($pass);
 		$this->name = htmlspecialchars($name);
 
-		$fields[0] = array('login', $this->login);
-		$fields[1] = array('pass', $this->hash);
-		$fields[2] = array('name', $this->name);
+		if($pass != ""){
+			$fields[0] = array('login', $this->login);
+			$fields[1] = array('pass', $this->hash);
+			$fields[2] = array('name', $this->name);
+		}else{
+			$fields[0] = array('login', $this->login);
+			$fields[1] = array('name', $this->name);
+		}	
 
 		return parent::UpdateRecord($this->table, $id, $fields);		
 	}
