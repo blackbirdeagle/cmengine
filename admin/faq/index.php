@@ -6,6 +6,7 @@
 
 	$faq = new CFaq($mysqli);
 	$result = $faq->GetFaq(2);
+	$ar_nav[] = array("/admin/faq/", "Вопрос/Ответ");
 	$item = 1;
 	$table = "faq";
 	$title = 'Административная панель - вопрос/ответ';

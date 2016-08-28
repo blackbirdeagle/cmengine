@@ -12,7 +12,7 @@
 		</div>
 		<div class = "col-md-9">
 			<div class = "breadcrumbs">
-				<a href = "/admin/">Главная</a> / <a href = "/admin/staticpage/">Статические страницы</a> / <span><?=$pageGet["h1"]?></span>
+				<?=ShowNav($ar_nav)?>
 			</div>
 			<?php require_once($_SERVER["DOCUMENT_ROOT"]."/templates/admin/blocks/forms/editpage.php");?>
 		</div>

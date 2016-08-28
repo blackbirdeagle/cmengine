@@ -6,6 +6,7 @@
 
 	$user = new CUser($mysqli);
 	$result = $user->GetUsers(0);
+	$ar_nav[] = array("/admin/users/", "Пользователи");
 	$item = 1;
 	$title = 'Административная панель - список пользователей';
 	require_once($_SERVER["DOCUMENT_ROOT"]."/templates/admin/users/users.php");

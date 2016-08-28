@@ -6,6 +6,7 @@
 	
 	$portfolio = new CPortfolio($mysqli);
 	$result = $portfolio->GetPortfolio(2);
+	$ar_nav[] = array("/admin/portfolio/", "Портфолио");
 	$item = 1;
 	$table = "portfolio";
 	$title = 'Административная панель - портфолио';

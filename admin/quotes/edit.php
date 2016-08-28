@@ -20,6 +20,8 @@
 
 		header("Location: /admin/quotes/");		
 	}
+	$ar_nav[] = array("/admin/reviews/", "Цитаты");
+	$ar_nav[] = array("", "Редактирование цитаты");
 	$title = 'Редактирование цитаты';
 	require_once($_SERVER["DOCUMENT_ROOT"]."/templates/admin/quotes/edit.php");
 ?>

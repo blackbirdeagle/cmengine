@@ -16,6 +16,8 @@
 			$error = "Ошибка добавления!";
 		}
 	}
+	$ar_nav[] = array("/admin/reviews/", "Отзывы");
+	$ar_nav[] = array("", "Добавление отзыва");
 	$title = 'Административная панель - добавление отзыва';
 	require_once($_SERVER["DOCUMENT_ROOT"]."/templates/admin/reviews/add.php");
 ?>

@@ -24,6 +24,8 @@
 
 		header("Location: /admin/staticpage/");		
 	}
-	$title = 'Редактирование страницы - '.$userGet["h1"];
+	$ar_nav[] = array("/admin/staticpage/", "Статические страницы");
+	$ar_nav[] = array("", $pageGet["seo_title"]);
+	$title = 'Редактирование страницы - '.$pageGet["seo_title"];
 	require_once($_SERVER["DOCUMENT_ROOT"]."/templates/admin/staticpage/edit.php");
 ?>

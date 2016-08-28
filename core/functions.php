@@ -13,4 +13,16 @@ function file_upload($_file, $_dir){
 		else return false;
 	}else return false;
 }
+/*Функция вывода навигационной цепочки*/
+function ShowNav($array){
+	$nav = "";
+	foreach ($array as $key => $value) {
+		if($key < count($array) - 1){
+			$nav .= "<a href = '".$value[0]."'>".$value[1]."</a> / ";
+		}else if($key == count($array) - 1){
+			$nav .= "<span>".$value[1]."</span>";
+		}
+	}
+	return $nav;
+}
 ?>

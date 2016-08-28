@@ -21,6 +21,8 @@
 
 		header("Location: /admin/faq/");		
 	}
+	$ar_nav[] = array("/admin/faq/", "Вопрос/Ответ");
+	$ar_nav[] = array("", "Редактирование вопроса");
 	$title = 'Редактирование вопроса';
 	require_once($_SERVER["DOCUMENT_ROOT"]."/templates/admin/faq/edit.php");
 ?>

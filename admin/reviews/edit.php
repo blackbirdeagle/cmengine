@@ -21,6 +21,8 @@
 
 		header("Location: /admin/reviews/");		
 	}
+	$ar_nav[] = array("/admin/reviews/", "Отзывы");
+	$ar_nav[] = array("", "Редактирование отзыва");
 	$title = 'Редактирование отзыва';
 	require_once($_SERVER["DOCUMENT_ROOT"]."/templates/admin/reviews/edit.php");
 ?>

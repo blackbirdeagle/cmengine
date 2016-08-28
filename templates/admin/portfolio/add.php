@@ -12,7 +12,7 @@
 		</div>
 		<div class = "col-md-9"><?=$error?>
 			<div class = "breadcrumbs">
-				<a href = "/admin/">Главная</a> / <a href = "/admin/portfolio/">Портфолио</a> / <span>Добавление работы</span> 
+				<?=ShowNav($ar_nav)?>
 			</div>
 			<?php require_once($_SERVER["DOCUMENT_ROOT"]."/templates/admin/blocks/forms/addportfolio.php");?>
 		</div>

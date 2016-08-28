@@ -25,7 +25,8 @@
 			}
 		}else $error = "Ошибка копирования файлов на сервер?";	
 	}
-
+	$ar_nav[] = array("/admin/portfolio/", "Портфолио");
+	$ar_nav[] = array("", "Добавление работы");
 	$title = 'Административная панель - добавление работы в портфолио';
 	require_once($_SERVER["DOCUMENT_ROOT"]."/templates/admin/portfolio/add.php");
 ?>

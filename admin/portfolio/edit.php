@@ -20,6 +20,8 @@
 
 		header("Location: /admin/portfolio/");		
 	}
+	$ar_nav[] = array("/admin/portfolio/", "Портфолио");
+	$ar_nav[] = array("", $portfolioGet["name"]);
 	$title = 'Редактирование работы в портфолио';
 	require_once($_SERVER["DOCUMENT_ROOT"]."/templates/admin/portfolio/edit.php");
 ?>

@@ -6,6 +6,7 @@
 
 	$services = new CServices($mysqli);
 	$result = $services->GetServices(2);
+	$ar_nav[] = array("/admin/services", "Услуги");
 	$item = 1;
 	$table = "services";
 	$title = 'Административная панель - услуги';

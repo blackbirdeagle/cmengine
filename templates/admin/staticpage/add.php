@@ -12,7 +12,7 @@
 		</div>
 		<div class = "col-md-9"><?=$error?>
 			<div class = "breadcrumbs">
-				<a href = "/admin/">Главная</a> / <a href = "/admin/staticpage/">Статические страницы</a> / <span>Добавление страницы</span>
+				<?=ShowNav($ar_nav)?>
 			</div>
 			<?php require_once($_SERVER["DOCUMENT_ROOT"]."/templates/admin/blocks/forms/addpage.php");?>
 		</div>

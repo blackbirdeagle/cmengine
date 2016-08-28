@@ -15,6 +15,8 @@
 			$error = "Ошибка добавления!";
 		}
 	}
+	$ar_nav[] = array("/admin/quotes/", "Цитаты");
+	$ar_nav[] = array("", "Добавление цитаты");
 	$title = 'Административная панель - добавление цитаты';
 	require_once($_SERVER["DOCUMENT_ROOT"]."/templates/admin/quotes/add.php");
 ?>

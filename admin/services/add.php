@@ -19,6 +19,8 @@
 			$error = "Ошибка добавления!";
 		}
 	}
+	$ar_nav[] = array("/admin/services/", "Услуги");
+	$ar_nav[] = array("", "Добавление услуги");
 	$title = 'Административная панель - добавление услуги';
 	require_once($_SERVER["DOCUMENT_ROOT"]."/templates/admin/services/add.php");
 ?>

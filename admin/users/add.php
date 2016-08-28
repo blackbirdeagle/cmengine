@@ -14,6 +14,8 @@
 
 		header("Location: /admin/users/");
 	}
+	$ar_nav[] = array("/admin/users/", "Пользователи");
+	$ar_nav[] = array("", 'Добавление пользователя');
 	$title = 'Административная панель - добавление пользователя';
 	require_once($_SERVER["DOCUMENT_ROOT"]."/templates/admin/users/add.php");
 ?>

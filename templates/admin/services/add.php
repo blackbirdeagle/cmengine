@@ -12,7 +12,7 @@
 		</div>
 		<div class = "col-md-9"><?=$error?>
 			<div class = "breadcrumbs">
-				<a href = "/admin/">Главная</a> / <a href = "/admin/services/">Услуги</a> / <span>Добавление услуги</span> 
+				<?=ShowNav($ar_nav)?> 
 			</div>
 			<?php require_once($_SERVER["DOCUMENT_ROOT"]."/templates/admin/blocks/forms/addservice.php");?>
 		</div>

@@ -24,6 +24,8 @@
 
 		header("Location: /admin/services/");		
 	}
-	$title = 'Редактирование услуги - '.$serviceGet["h1"];
+	$ar_nav[] = array("/admin/services/", "Услуги");
+	$ar_nav[] = array("", $serviceGet["seo_title"]);
+	$title = 'Редактирование услуги - '.$serviceGet["seo_title"];
 	require_once($_SERVER["DOCUMENT_ROOT"]."/templates/admin/services/edit.php");
 ?>

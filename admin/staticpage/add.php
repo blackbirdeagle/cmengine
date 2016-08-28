@@ -19,6 +19,8 @@
 			$error = "Ошибка добавления!";
 		}
 	}
+	$ar_nav[] = array("/admin/staticpage/", "Статические страницы");
+	$ar_nav[] = array("", "Добавление страницы");
 	$title = 'Административная панель - добавление статической страницы';
 	require_once($_SERVER["DOCUMENT_ROOT"]."/templates/admin/staticpage/add.php");
 ?>

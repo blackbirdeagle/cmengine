@@ -6,6 +6,7 @@
 
 	$pages = new CStaticPages($mysqli);
 	$result = $pages->GetPages(2);
+	$ar_nav[] = array("/admin/staticpage/", "Статические страницы");
 	$item = 1;
 	$table = "staticpage";
 	$title = 'Административная панель - статические страницы';

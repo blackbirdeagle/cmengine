@@ -12,7 +12,7 @@
 		</div>
 		<div class = "col-md-9">
 			<div class = "breadcrumbs">
-				<a href = "/admin/">Главная</a> / <span>Услуги</span>
+				<?=ShowNav($ar_nav)?>
 			</div>
 			<table>
 				<tr>

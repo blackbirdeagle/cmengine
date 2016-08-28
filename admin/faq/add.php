@@ -16,6 +16,8 @@
 			$error = "Ошибка добавления!";
 		}
 	}
+	$ar_nav[] = array("/admin/faq/", "Вопрос/Ответ");
+	$ar_nav[] = array("", "Добавление вопроса");
 	$title = 'Административная панель - добавление вопроса';
 	require_once($_SERVER["DOCUMENT_ROOT"]."/templates/admin/faq/add.php");
 ?>

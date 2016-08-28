@@ -10,6 +10,8 @@ $mysqli->query("SET NAMES 'utf8'");
 
 session_start();
 
+$ar_nav[] = array("/admin/", "Главная");
+
 require_once($_SERVER["DOCUMENT_ROOT"]."/core/functions.php");
 require_once($_SERVER["DOCUMENT_ROOT"]."/core/mysql.class.php");
 ?>

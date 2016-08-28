@@ -19,6 +19,8 @@
 
 		header("Location: /admin/users/");		
 	}
+	$ar_nav[] = array("/admin/users/", "Пользователи");
+	$ar_nav[] = array("", $userGet["name"]);
 	$title = 'Редактирование пользователя - '.$userGet["name"];
 	require_once($_SERVER["DOCUMENT_ROOT"]."/templates/admin/users/edit.php");
 ?>
