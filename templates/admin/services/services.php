@@ -11,6 +11,9 @@
 			<?php require_once($_SERVER["DOCUMENT_ROOT"]."/templates/admin/blocks/left_menu.php");?>
 		</div>
 		<div class = "col-md-9">
+			<div class = "breadcrumbs">
+				<a href = "/admin/">Главная</a> / <span>Услуги</span>
+			</div>
 			<table>
 				<tr>
 					<th>№</th>
