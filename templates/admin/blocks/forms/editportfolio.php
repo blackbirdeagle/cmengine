@@ -1,5 +1,5 @@
 <form method = "POST" action = "">
-	<img width = "300" src = "<?=$portfolioGet["image"]?>" alt = "">
+	<img width = "300" src = "<?=$portfolioGet["image"]?>" alt = ""/>
 	<input class = "form-control" type = "text" name = "PORTFOLIO_NAME" placeholder = "Название работы" required value = "<?=$portfolioGet["name"]?>"/>	
 	<input type = "hidden" name = "PORTFOLIO_IMAGE" value = "<?=$portfolioGet["image"]?>"/>
 	<input type = "hidden" name = "PORTFOLIO_ID" value = "<?=$portfolioGet["id"]?>"/>			

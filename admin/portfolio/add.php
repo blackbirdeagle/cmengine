@@ -9,10 +9,10 @@
 		$image = "";
 
 		if(isset($_FILES["PORTFOLIO_IMAGE"])){
-			if(file_upload($_FILES["PORTFOLIO_IMAGE"], $_SERVER["DOCUMENT_ROOT"]."/upload/")){
+			if(file_upload($_FILES["PORTFOLIO_IMAGE"], $_SERVER["DOCUMENT_ROOT"]."/upload/portfolio/")){
 				$arr = explode(".", basename($_FILES["PORTFOLIO_IMAGE"]["name"]));
 				$name_img = md5($arr[0]).".".$arr[1];
-				$image = "/upload/".$name_img;			
+				$image = "/upload/portfolio/".$name_img;			
 			}		
 		}
 

@@ -8,11 +8,25 @@
 		$login = $_POST["USER_LOGIN"];
 		$pass = $_POST["USER_PASS"];
 		$name = $_POST["USER_NAME"];
+		$image = "";
+		$politic = $_POST["USER_POLITIC"];
 
-		$user = new CUser($mysqli);
-		$user->AddUser($login, $pass, $name);
+		if(isset($_FILES["USER_IMAGE"])){
+			if(file_upload($_FILES["USER_IMAGE"], $_SERVER["DOCUMENT_ROOT"]."/upload/users/")){
+				$arr = explode(".", basename($_FILES["USER_IMAGE"]["name"]));
+				$name_img = md5($arr[0]).".".$arr[1];
+				$image = "/upload/users/".$name_img;			
+			}		
+		}
 
-		header("Location: /admin/users/");
+		if($image != ""){
+			$user = new CUser($mysqli);
+			if($user->AddUser($login, $pass, $name, $image, $politic)){
+				header("Location: /admin/users/");
+			}else{
+				$error = "Ошибка добавления!";
+			}
+		}else $error = "Ошибка копирования файлов на сервер?";
 	}
 	$ar_nav[] = array("/admin/users/", "Пользователи");
 	$ar_nav[] = array("", 'Добавление пользователя');

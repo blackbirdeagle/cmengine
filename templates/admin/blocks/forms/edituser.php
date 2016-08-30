@@ -1,4 +1,7 @@
 <form method = "POST" action = "">
+	<?if($userGet["image"]):?>
+		<img width = "300" src = "<?=$userGet["image"]?>" alt = ""/>
+	<?endif;?>	
 	<input class = "form-control" type = "text" name = "USER_NAME" placeholder = "Имя" required value = "<?=$userGet["name"]?>"/>
 	<input class = "form-control" type = "text" name = "USER_LOGIN" placeholder = "Логин" required value = "<?=$userGet["login"]?>">
 	<input class = "form-control" type = "password" name = "USER_PASS" placeholder = "Новый пароль"/>

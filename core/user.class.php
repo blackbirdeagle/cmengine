@@ -3,13 +3,17 @@ class CUser extends CMySQL{
 	public $login;
 	public $hash;
 	public $name;
+	public $image;
+	public $politic;
 
 	public function __construct($connect/*дескриптор подключения*/){
 		parent::__construct($connect);
-		$this->table  = PREFIX."users";
-		$this->login = NULL;
-		$this->hash  = NULL;
-		$this->name  = NULL;
+		$this->table   = PREFIX."users";
+		$this->login   = NULL;
+		$this->hash    = NULL;
+		$this->name    = NULL;
+		$this->image   = NULL;
+		$this->politic = NULL;
 	}
 	/*Проверка существования пользователя в базе*/
 	public function ValidateUser($login, $password){
@@ -35,14 +39,18 @@ class CUser extends CMySQL{
 		return parent::GetByID($this->table, $id);
 	}
 	/*Метод добавления пользователя в базу*/
-	public function AddUser($login, $pass, $name){
-		$this->login = htmlspecialchars($login);
-		$this->hash = md5($pass);
-		$this->name = htmlspecialchars($name);	
+	public function AddUser($login, $pass, $name, $image, $politic){
+		$this->login   = htmlspecialchars($login);
+		$this->hash    = md5($pass);
+		$this->name    = htmlspecialchars($name);	
+		$this->image   = $image;
+		$this->politic = $politic;
 
 		$fields[0] = array('login', $this->login);
 		$fields[1] = array('pass', $this->hash);
 		$fields[2] = array('name', $this->name);
+		$fields[3] = array('image', $this->image);
+		$fields[4] = array('politic', $this->politic);
 
 		return parent::AddRecord($this->table, $fields);	
 	}
@@ -65,6 +73,8 @@ class CUser extends CMySQL{
 	}
 	/*Метод удаления пользователя*/
 	public function DeleteUser($id){
+		$work = parent::GetByID($this->table, $id);
+		unlink($_SERVER["DOCUMENT_ROOT"].$work["image"]);
 		return parent::delete($this->table, $id);
 	}
 }
