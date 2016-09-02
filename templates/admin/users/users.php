@@ -14,25 +14,28 @@
 			<div class = "breadcrumbs">
 				<?=ShowNav($ar_nav)?>
 			</div>	
-			<table>
-				<tr>
-					<th>№</th>
-					<th>Логин</th>
-					<th>Имя</th>
-					<th>Дата добавления/обновления</th>
-					<th>Действия</th>
-				</tr>	
-				<?foreach($result as $key => $row):?>
+			<div class = "table-responsive">
+				<table class = "table">
 					<tr>
-						<td><?=$item?></td>
-						<td><?=$row["login"]?></td>
-						<td><?=$row["name"]?></td>	
-						<td><?=$row["created_at"]?></td>
-						<td><a href = "/admin/users/edit.php?id=<?=$row['id']?>">Редактировать</a> / <a href = "javascript:void(0);" onclick = "deleteUser('<?=$row['id']?>')">Удалить</a></td>
-					</tr>						
-					<?$item++;?>
-				<?endforeach;?>
-			</table>
+						<th>№</th>
+						<th>Логин</th>
+						<th>Имя</th>
+						<th>Дата добавления/обновления</th>
+						<th>Действия</th>
+					</tr>	
+					<?foreach($result as $key => $row):?>
+						<tr>
+							<td><?=$item?></td>
+							<td><?=$row["login"]?></td>
+							<td><?=$row["name"]?></td>	
+							<td><?=$row["created_at"]?></td>
+							<td><a href = "/admin/users/edit.php?id=<?=$row['id']?>"><span class="glyphicon glyphicon-pencil"></span>
+</a> / <a href = "javascript:void(0);" onclick = "deleteUser('<?=$row['id']?>')"><span class = "glyphicon glyphicon-remove"></span></a></td>
+						</tr>						
+						<?$item++;?>
+					<?endforeach;?>
+				</table>
+			</div>	
 			<a href = "/admin/users/add.php">Добавить пользователя</a>
 		</div>
 	</div>

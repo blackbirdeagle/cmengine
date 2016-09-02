@@ -5,7 +5,7 @@
 	require_once($_SERVER["DOCUMENT_ROOT"]."/admin/authcontrol.php");
 
 	$user = new CUser($mysqli);
-	$result = $user->GetUsers(0);
+	$result = $user->GetUsers(0, 'id');
 	$ar_nav[] = array("/admin/users/", "Пользователи");
 	$item = 1;
 	$title = 'Административная панель - список пользователей';

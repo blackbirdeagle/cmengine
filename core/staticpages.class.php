@@ -45,8 +45,8 @@ class CStaticPages extends CMySQL{
 		return parent::AddRecord($this->table, $fields);
 	}
 	/*Метод получения всех статических страниц ввиде ассоциативного массива*/
-	public function GetPages($stat){
-		return parent::GetRecords($this->table, $stat);		
+	public function GetPages($stat, $sort){
+		return parent::GetRecords($this->table, $stat, $sort);		
 	}
 	/*Метод получения статической по id*/
 	public function GetPageByID($id){

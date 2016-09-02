@@ -24,8 +24,8 @@ class CQuotes extends CMySQL{
 		return parent::AddRecord($this->table, $fields);
 	}
 	/*Метод получения всех цитат ввиде ассоциативного массива*/
-	public function GetQuotes($stat){
-		return parent::GetRecords($this->table, $stat);		
+	public function GetQuotes($stat, $sort){
+		return parent::GetRecords($this->table, $stat, $sort);		
 	}	
 	/*Метод получения цитаты по id*/
 	public function GetQuoteByID($id){

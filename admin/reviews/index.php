@@ -5,7 +5,7 @@
 	require_once($_SERVER["DOCUMENT_ROOT"]."/admin/authcontrol.php");
 
 	$review = new CReviews($mysqli);
-	$result = $review->GetReviews(0);
+	$result = $review->GetReviews(0, "id");
 	$ar_nav[] = array("/admin/reviews/", "Отзывы");
 	$item = 1;
 	$title = 'Административная панель - отзывы';

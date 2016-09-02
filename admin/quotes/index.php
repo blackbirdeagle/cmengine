@@ -5,7 +5,7 @@
 	require_once($_SERVER["DOCUMENT_ROOT"]."/admin/authcontrol.php");
 
 	$quote = new CQuotes($mysqli);
-	$result = $quote->GetQuotes(0);
+	$result = $quote->GetQuotes(0, "id");
 	$ar_nav[] = array("/admin/quotes/", "Цитаты");
 	$item = 1;
 	$title = 'Административная панель - цитаты';

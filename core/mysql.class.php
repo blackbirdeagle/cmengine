@@ -7,10 +7,12 @@
 class CMySQL{
 	protected $conn;
 	protected $query;
+	protected $sort;
 
 	public function __construct($connect/*дескриптор подключения*/){
 		$this->conn  = $connect;
 		$this->query = NULL;
+		$this->sort  = NULL; 
 	}
 	/*Метод добавления записи в таблицу*/
 	public function AddRecord($_tname, $_fields){
@@ -53,15 +55,14 @@ class CMySQL{
 		}else return false;			
 	}
 	/*Метод получения всех записей из таблицы*/
-	public function GetRecords($_tname, $_stat/*0-все записи, 1-записи без флага блокировки*/){
+	public function GetRecords($_tname, $_stat/*0-все записи, 1-записи без флага блокировки*/, $_sort/*Поле сортировки*/){
 		$this->query = "";
 		$mass = array();
-		
+		$this->sort = $_sort;
 		//($_stat == 0) ? $this->query = "SELECT * FROM `".$_tname."`" : $this->query = "SELECT * FROM `".$_tname."` WHERE `block` = '0'";
 
-		if($_stat == 0) $this->query = "SELECT * FROM `".$_tname."`";
-		else if($_stat == 1) $this->query = "SELECT * FROM `".$_tname."` WHERE `block` = '0'";
-		else if($_stat == 2) $this->query = "SELECT * FROM `".$_tname."` WHERE `block` = '0' ORDER BY `sort` ASC";
+		if($_stat == 0) $this->query = "SELECT * FROM `".$_tname."` ORDER BY `".$this->sort."` ASC";
+		else if($_stat == 1) $this->query = "SELECT * FROM `".$_tname."` WHERE `block` = '0' ORDER BY `".$this->sort."` ASC";
 
 		if($result = $this->conn->query($this->query)){
 			while($row = $result->fetch_assoc()){

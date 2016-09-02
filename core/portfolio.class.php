@@ -14,8 +14,8 @@ class CPortfolio extends CMySQL{
 		$this->block = NULL;
 	}
 	/*Метод получения всех работ в портфолио ввиде ассоциативного массива*/
-	public function GetPortfolio($stat){
-		return parent::GetRecords($this->table, $stat);
+	public function GetPortfolio($stat, $sort){
+		return parent::GetRecords($this->table, $stat, $sort);
 	}
 	/*Метод добавления работы в портфолио*/
 	public function AddPortfolio($image, $name){

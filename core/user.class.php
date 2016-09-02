@@ -31,8 +31,8 @@ class CUser extends CMySQL{
 		}else return false;
 	}
 	/*Метод получения всех пользователей в виде ассоциативного массива*/
-	public function GetUsers($stat){
-		return parent::GetRecords($this->table, $stat);
+	public function GetUsers($stat, $sort){
+		return parent::GetRecords($this->table, $stat, $sort);
 	}
 	/*Метод получения пользователя по id*/
 	public function GetUserByID($id){

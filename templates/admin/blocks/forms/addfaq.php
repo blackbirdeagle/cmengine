@@ -1,6 +1,15 @@
-<form method = "POST" action = "">
-	<textarea class = "form-control" name = "FAQ_QUEST" placeholder = "Текст вопроса" required></textarea>
-	<input class = "form-control" name = "FAQ_AUTHOR" placeholder = "Автор вопроса" required/>
-	<textarea class = "form-control" name = "FAQ_ANSWER" placeholder = "Текст ответа" required></textarea>
-	<input class = "form-control" type = "submit" name = "FAQ_ADD" value = "Добавить"/>
+<form role = "form" method = "POST" action = "">
+	<div class = "form-group">
+		<label for = "inputQuest">Текст вопроса</label>
+		<textarea id = "inputQuest" class = "form-control" name = "FAQ_QUEST" placeholder = "Введите вопрос" required></textarea>
+	</div>	
+	<div class = "form-group">
+		<label for = "inputAuthor">Автор вопроса</label>
+		<input id = "inputAuthor" class = "form-control" name = "FAQ_AUTHOR" placeholder = "Имя автора" required/>
+	</div>	
+	<div class = "form-group">
+		<label for = "inputAnswer">Текст ответа</label>
+		<textarea id = "inputAnswer" class = "form-control" name = "FAQ_ANSWER" placeholder = "Текст ответа" placeholder></textarea>
+	</div>	
+	<button type = "submit" name = "FAQ_ADD" class="btn btn-primary">Добавить</button>
 </form>

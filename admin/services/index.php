@@ -5,7 +5,7 @@
 	require_once($_SERVER["DOCUMENT_ROOT"]."/admin/authcontrol.php");
 
 	$services = new CServices($mysqli);
-	$result = $services->GetServices(2);
+	$result = $services->GetServices(0, 'sort');
 	$ar_nav[] = array("/admin/services", "Услуги");
 	$item = 1;
 	$table = "services";

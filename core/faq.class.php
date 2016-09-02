@@ -33,8 +33,8 @@ class CFaq extends CMySQL{
 		return parent::AddRecord($this->table, $fields);
 	}
 	/*Метод выборки всех вопросов ввиде ассоциативного массива*/
-	public function GetFaq($stat){
-		return parent::GetRecords($this->table, $stat);		
+	public function GetFaq($stat, $sort){
+		return parent::GetRecords($this->table, $stat, $sort);		
 	}
 	/*Метод получения вопроса по id*/
 	public function GetFaqByID($id){

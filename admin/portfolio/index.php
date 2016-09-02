@@ -5,7 +5,7 @@
 	require_once($_SERVER["DOCUMENT_ROOT"]."/admin/authcontrol.php");
 	
 	$portfolio = new CPortfolio($mysqli);
-	$result = $portfolio->GetPortfolio(2);
+	$result = $portfolio->GetPortfolio(0, 'sort');
 	$ar_nav[] = array("/admin/portfolio/", "Портфолио");
 	$item = 1;
 	$table = "portfolio";

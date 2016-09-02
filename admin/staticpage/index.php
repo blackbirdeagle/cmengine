@@ -5,7 +5,7 @@
 	require_once($_SERVER["DOCUMENT_ROOT"]."/admin/authcontrol.php");
 
 	$pages = new CStaticPages($mysqli);
-	$result = $pages->GetPages(2);
+	$result = $pages->GetPages(0, 'sort');
 	$ar_nav[] = array("/admin/staticpage/", "Статические страницы");
 	$item = 1;
 	$table = "staticpage";

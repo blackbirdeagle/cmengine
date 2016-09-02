@@ -7,7 +7,6 @@ class CServices extends CMySQL{
 	public $h1;
 	public $text;
 	public $block;
-	private $sort;
 
 	public function __construct($connect/*дескриптор подключения*/){
 		parent::__construct($connect);
@@ -18,8 +17,7 @@ class CServices extends CMySQL{
 		$this->seo_key      = NULL;
 		$this->h1           = NULL;
 		$this->text         = NULL;
-		$this->block        = NULL;
-		$this->sort         = NULL;		
+		$this->block        = NULL;	
 	}
 
 	/*Метод добавления услуги*/
@@ -47,8 +45,8 @@ class CServices extends CMySQL{
 		return parent::AddRecord($this->table, $fields);
 	}
 	/*Метод получения всех услуг ввиде ассоциативного массива*/
-	public function GetServices($stat){
-		return parent::GetRecords($this->table, $stat);		
+	public function GetServices($stat, $sort){
+		return parent::GetRecords($this->table, $stat, $sort);		
 	}	
 	/*Метод получения услуги по id*/
 	public function GetServiceByID($id){

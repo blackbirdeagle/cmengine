@@ -15,8 +15,8 @@ class CReviews extends CMySQL{
 		$this->block  = NULL;		
 	}
 	/*Метод получения всех цитат ввиде ассоциативного массива*/
-	public function GetReviews($stat){
-		return parent::GetRecords($this->table, $stat);		
+	public function GetReviews($stat, $sort){
+		return parent::GetRecords($this->table, $stat, $sort);		
 	}
 	/*Метод добавления отзыва*/
 	public function AddReview($text, $author, $data){
