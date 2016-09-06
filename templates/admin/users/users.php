@@ -19,7 +19,8 @@
 					<tr>
 						<th>№</th>
 						<th>Логин</th>
-						<th>Имя</th>
+						<th>Имя пользователя</th>
+						<th>Статус</th>
 						<th>Дата добавления/обновления</th>
 						<th>Действия</th>
 					</tr>	
@@ -28,6 +29,7 @@
 							<td><?=$item?></td>
 							<td><?=$row["login"]?></td>
 							<td><?=$row["name"]?></td>	
+							<td><?=$row["politic"]?></td>
 							<td><?=$row["created_at"]?></td>
 							<td><a href = "/admin/users/edit.php?id=<?=$row['id']?>"><span class="glyphicon glyphicon-pencil"></span>
 </a> / <a href = "javascript:void(0);" onclick = "deleteUser('<?=$row['id']?>')"><span class = "glyphicon glyphicon-remove"></span></a></td>

@@ -1,7 +1,7 @@
 <form role = "form" method = "POST" action = "">
 	<div class = "form-group">
 		<label for = "inputQuest">Текст вопроса</label>
-		<textarea id = "inputQuest" class = "form-control" name = "FAQ_QUEST" placeholder = "Введите вопрос" required></textarea>
+		<textarea id = "inputQuest" class = "form-control" name = "FAQ_QUEST" placeholder = "Введите вопрос"></textarea>
 	</div>	
 	<div class = "form-group">
 		<label for = "inputAuthor">Автор вопроса</label>
