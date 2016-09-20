@@ -18,6 +18,6 @@
 	<script type = "text/javascript" src = "/templates/plugins/tinymce/tinymce.min.js"></script>	
 	<script type = "text/javascript">tinymce.init({ selector:'textarea' });</script>
 
-	<title><?=$title?></title>
+	<title><?=$title.' | '.SITE_NAME?></title>
 </head>	
 <body>
