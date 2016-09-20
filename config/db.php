@@ -13,6 +13,9 @@ session_start();
 
 $ar_nav[] = array("/admin/", "Главная");
 
+$url = $_SERVER["REQUEST_URI"]; //текущий url
+
 require_once($_SERVER["DOCUMENT_ROOT"]."/core/functions.php");
 require_once($_SERVER["DOCUMENT_ROOT"]."/core/mysql.class.php");
+require_once($_SERVER["DOCUMENT_ROOT"]."/admin/left_menu.php");
 ?>

@@ -1,9 +1,5 @@
 <ul>
-	<li><a href = "/admin/users/">Пользователи</a></li>
-	<li><a href = "/admin/staticpage/">Статические страницы</a></li>
-	<li><a href = "/admin/services/">Услуги</a></li>
-	<li><a href = "/admin/portfolio/">Портфолио</a></li>
-	<li><a href = "/admin/reviews/">Отзывы</a></li>
-	<li><a href = "/admin/faq/">Вопрос/Ответ</a></li>
-	<li><a href = "/admin/quotes/">Цитатник</a></li>
+	<?foreach($arAdminMenu as $itemMenu):?>
+		<li><a class = "btn btn-default <?if($itemMenu["LINK"] == $url):?>selected<?endif;?>" href = "<?=$itemMenu["LINK"]?>"><?=$itemMenu["NAME"]?></a></li>
+	<?endforeach;?>
 </ul>

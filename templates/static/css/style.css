@@ -10,3 +10,23 @@
     left: 50%;
     margin: -125px 0 0 -125px;	
 }
+
+.left-sidebar .selected{
+	color: #333;
+	background-color: #e6e6e6;
+	border-color: #adadad;	
+}
+
+.left-sidebar ul{
+	padding: 0;	
+}
+
+.left-sidebar ul li{
+	list-style: none;
+	
+}
+
+.left-sidebar ul li a{
+	width: 100%;
+	text-align: left;	
+}
