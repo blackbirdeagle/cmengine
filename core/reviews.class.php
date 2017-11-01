@@ -1,4 +1,9 @@
 <?php
+/*
+Copyright: Alexander Afanasyev
+Name: class Rewiews
+Date: 2016-2017
+*/
 class CReviews extends CMySQL{
 	private $table;
 	private $author;

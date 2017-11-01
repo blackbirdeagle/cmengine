@@ -1,4 +1,9 @@
 <?php
+/*
+Copyright: Alexander Afanasyev
+Name: class FaqDown
+Date: 2016-2017
+*/
 class CFaq extends CMySQL{
 	public $quest;
 	public $author;

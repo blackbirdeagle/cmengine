@@ -1,4 +1,9 @@
 <?php
+/*
+Copyright: Alexander Afanasyev
+Name: class Portfolio
+Date: 2016-2017
+*/
 class CPortfolio extends CMySQL{
 	private $table;
 	private $preview_image;

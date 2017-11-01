@@ -1,10 +1,15 @@
 <?php
+/*
+Copyright: Alexander Afanasyev
+Name: connection setting
+Date: 2016-2017
+*/
 define("HOST", "localhost");
 define("USER", "root");
 define("PASS", "");
 define("BASE", "engine_base");
 define("PREFIX", "ywm_");
-define("SITE_NAME", "Твой веб-мастер");
+define("SITE_NAME", "Автосеривис Бежица-Универсал");
 
 @$mysqli = new mysqli(HOST, USER, PASS, BASE);
 $mysqli->query("SET NAMES 'utf8'");

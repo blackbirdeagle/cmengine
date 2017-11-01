@@ -1,4 +1,9 @@
 <?php
+/*
+Copyright: Alexander Afanasyev
+Name: class User
+Date: 2016-2017
+*/
 class CUser extends CMySQL{
 	public $login;
 	public $hash;

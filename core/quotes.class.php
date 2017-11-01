@@ -1,4 +1,9 @@
 <?php
+/*
+Copyright: Alexander Afanasyev
+Name: class Quotes
+Date: 2016-2017
+*/
 class CQuotes extends CMySQL{
 	private $table;
 	private $text;

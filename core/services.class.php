@@ -1,4 +1,9 @@
 <?php
+/*
+Copyright: Alexander Afanasyev
+Name: class Services
+Date: 2016-2017
+*/
 class CServices extends CMySQL{
 	public $seo_title;
 	public $seo_keywords;

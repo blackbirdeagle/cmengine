@@ -23,5 +23,5 @@
 		<label for = "inputText">Текст страницы</label>
 		<textarea id = "inputText" class = "form-control" name = "SERVICE_TEXT" placeholder = "Введите текст страницы"></textarea>
 	</div>
-	<button class = "btn btn-primary" type = "submit" name = "SERVICE_ADD">Добавить</buttom>
+	<button class = "btn btn-primary" type = "submit" name = "SERVICE_ADD">Добавить</button>
 </form>

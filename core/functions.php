@@ -1,4 +1,10 @@
 <?php
+/*
+Copyright: Alexander Afanasyev
+Name: functions
+Date: 2016-2017
+*/
+
 /*Дамп ассоциативного массива*/
 function ar_dump($array){
 	echo '<pre>'; print_r($array); echo '</pre>';

@@ -1,4 +1,9 @@
 <?php
+/*
+Copyright: Alexander Afanasyev
+Name: class StaticPage
+Date: 2016-2017
+*/
 class CStaticPages extends CMySQL{
 	public $seo_title;
 	public $seo_keywords;
