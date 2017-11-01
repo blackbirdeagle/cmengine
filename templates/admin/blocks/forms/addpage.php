@@ -1,27 +1,13 @@
-<form role = "form" method = "POST" action = "">
-	<div class = "form-group">
-		<label for = "inputTitle">Заголовок окна браузера</label>
-		<input id = "inputTitle" class = "form-control text" type = "text" name = "PAGE_TITLE" placeholder = "Введите заголовок окна браузера" required/>
-	</div>
-	<div class = "form-group">
-		<label for = "inputKeywords">Ключевые слова</label>
-		<input id = "inputKeywords" class = "form-control" type = "text" name = "PAGE_KEYWORDS" placeholder = "Введите ключевые слова страницы" />
-	</div>
-	<div class = "form-group">
-		<label for = "inputDesc">Описание страницы</label>
-		<input id = "inputDesc" class = "form-control" type = "text" name = "PAGE_DESC" placeholder = "Введите описание страницы"/>
-	</div>
-	<div class = "form-group">
-		<label for = "inputKey">Seo-ключ</label>
-		<input id = "inputKey" class = "form-control translit_text" type = "text" name = "PAGE_KEY" placeholder = "Введите seo-ключ" required/>
-	</div>
-	<div class = "form-group">
-		<label for = "inputH1">Заголовок страницы</label>
-		<input id = "inputH1" class = "form-control" type = "text" name = "PAGE_H1" placeholder = "Введите заголовок страницы H1" required/>
-	</div>
-	<div class = "form-group">
-		<label for = "inputText">Текст страницы</label>
-		<textarea id = "inputText" class = "form-control" name = "PAGE_TEXT" placeholder = "Введите текст страницы"></textarea>
-	</div>
-	<button class="btn btn-primary" type = "submit" name = "PAGE_ADD">Добавить</button>
-</form>
+<?php
+$addPageForm = new CFormBuilder();
+
+$addPageForm->FormStart("POST", "");
+$addPageForm->input("text", "inputTitle", "form-control text", "form-group", "PAGE_TITLE", "Заголовок окна браузера", "", true, true);
+$addPageForm->input("text", "inputKeywords", "form-control", "form-group", "PAGE_KEYWORDS", "Ключевые слова", "", true, false);
+$addPageForm->input("text", "inputDesc", "form-control", "form-group", "PAGE_DESC", "Описание страницы", "", true, false);
+$addPageForm->input("text", "inputKey", "form-control translit_text", "form-group", "PAGE_KEY", "Seo-ключ", "", true, true);
+$addPageForm->input("text", "inputH1", "form-control", "form-group", "PAGE_H1", "Заголовок страницы", "", true, true);
+$addPageForm->textarea("inputText", "form-control", "form-group", "PAGE_TEXT", "Текст страницы", "", true, false);
+$addPageForm->button("submit", "btn btn-primary", "PAGE_ADD", "Добавить");
+$addPageForm->FormFinish();
+?>

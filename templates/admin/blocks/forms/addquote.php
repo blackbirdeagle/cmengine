@@ -1,11 +1,9 @@
-<form role = "form" method = "POST" action = "">
-	<div class = "form-group">
-		<label for = "inputQuote">Текст цитаты</label>
-		<textarea id = "inputQuote" class = "form-control" name = "QUOTE_TEXT" placeholder = "Введите текст цитаты"></textarea>
-	</div>
-	<div class = "form-group">
-		<label for = "inputAuthor">Автор цитаты</label>
-		<input id = "inputAuthor" class = "form-control" type = "text" name = "QUOTE_AUTHOR" placeholder = "Введите имя автора" required/>
-	</div>
-	<button class = "btn btn-primary" type = "submit" name = "QUOTE_ADD">Добавить</button>
-</form>
+<?php
+$addQuoteForm = new CFormBuilder();
+
+$addQuoteForm->FormStart("POST", "");
+$addQuoteForm->input("text", "inputAuthor", "form-control", "form-group", "QUOTE_AUTHOR", "Автор цитаты", "", true, true);
+$addQuoteForm->textarea("inputQuote", "form-control", "form-group", "QUOTE_TEXT", "Текст цитаты", "", true, true);
+$addQuoteForm->button("submit", "btn btn-primary", "QUOTE_ADD", "Добавить");
+$addQuoteForm->FormFinish();
+?>

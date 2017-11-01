@@ -1,15 +1,10 @@
-<form role = "form" method = "POST" action = "">
-	<div class = "form-group">
-		<label for = "inputText">Текст отзыва</label>
-		<textarea id = "inputText" class = "form-control" name = "REVIEW_TEXT" placeholder = "Введите текст отзыва"></textarea>
-	</div>
-	<div class = "form-group">
-		<label for = "inputAuthor">Автор отзыва</label>
-		<input id = "inputAuthor" class = "form-control" type = "text" name = "REVIEW_AUTHOR" placeholder = "Введите имя автора" required/>
-	</div>
-	<div class = "form-group">
-		<label for = "inputData">Дата отзыва</label>
-		<input id = "inputData" class = "form-control" type = "text" name = "REVIEW_DATA" placeholder = "Дата отзыва" required/>
-	</div>
-	<button class = "btn btn-primary" type = "submit" name = "REVIEW_ADD">Добавить</button>
-</form>
+<?php
+$addReviewForm = new CFormBuilder();
+
+$addReviewForm->FormStart("POST", "");
+$addReviewForm->input("text", "inputAuthor", "form-control", "form-group", "REVIEW_AUTHOR", "Автор отзыва", "", true, true);
+$addReviewForm->textarea("inputText", "form-control", "form-group", "REVIEW_TEXT", "Текст отзыва", "", true, true);
+$addReviewForm->input("text", "inputData", "form-control", "form-group", "REVIEW_DATA", "Дата отзыва", "", true, true);
+$addReviewForm->button("submit", "btn btn-primary", "REVIEW_ADD", "Добавить");
+$addReviewForm->FormFinish();
+?>

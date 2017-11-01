@@ -1,15 +1,10 @@
-<form role = "form" method = "POST" action = "">
-	<div class = "form-group">
-		<label for = "inputQuest">Текст вопроса</label>
-		<textarea id = "inputQuest" class = "form-control" name = "FAQ_QUEST" placeholder = "Введите вопрос"></textarea>
-	</div>	
-	<div class = "form-group">
-		<label for = "inputAuthor">Автор вопроса</label>
-		<input id = "inputAuthor" class = "form-control" name = "FAQ_AUTHOR" placeholder = "Имя автора" required/>
-	</div>	
-	<div class = "form-group">
-		<label for = "inputAnswer">Текст ответа</label>
-		<textarea id = "inputAnswer" class = "form-control" name = "FAQ_ANSWER" placeholder = "Текст ответа" placeholder></textarea>
-	</div>	
-	<button type = "submit" name = "FAQ_ADD" class="btn btn-primary">Добавить</button>
-</form>
+<?php
+$addFaqForm = new CFormBuilder();
+
+$addFaqForm->FormStart("POST", "");
+$addFaqForm->input("text", "inputAuthor", "form-control", "form-group", "FAQ_AUTHOR", "Автор вопроса", "", true, true);
+$addFaqForm->textarea("inputQuest", "form-control", "form-group", "FAQ_QUEST", "Текст ответа", "", true, true);
+$addFaqForm->textarea("inputAnswer", "form-control", "form-group", "FAQ_ANSWER", "Текст ответа", "", true, true);
+$addFaqForm->button("submit", "btn btn-primary", "FAQ_ADD", "Добавить");
+$addFaqForm->FormFinish();
+?>

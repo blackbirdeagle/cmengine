@@ -8,25 +8,65 @@ class CFormBuilder{
 	
 	public function FormStart($method, $action, $type = false){
 		if($type)
-			echo '<form method = "'.$method.'" action = "'.$action.'" enctype = "multipart/form-data">';
+			echo '<form role = "form" method = "'.$method.'" action = "'.$action.'" enctype = "multipart/form-data">';
 		else
-			echo '<form method = "'.$method.'" action = "'.$action.'">';
+			echo '<form role = "form" method = "'.$method.'" action = "'.$action.'">';
 	}
 
-	public function Field($vid, $type, $classes, $name, $placeholder, $value, $required = false){
-		if($vid == "textarea"){
-			if($required)
-				echo '<textarea class = "'.$classes.'" name = "'.$name.'" placeholder = "'.$placeholder.'" required>'.$value.'</textarea>';
-			else
-				echo '<textarea class = "'.$classes.'" name = "'.$name.'" placeholder = "'.$placeholder.'">'.$value.'</textarea>';
-		}else if($vid == "input"){
-			if($required)
-				echo '<'.$vid.' type = "'.$type.'" class = "'.$classes.'" name = "'.$name.'" placeholder = "'.$placeholder.'" value = "'.$value.'" required />';
-			else
-				echo '<'.$vid.' type = "'.$type.'" class = "'.$classes.'" name = "'.$name.'" placeholder = "'.$placeholder.'" value = "'.$value.'" />';			
-		}else if($vid == "select"){
-
+	public function input($type, $id, $classes, $cl_wrap, $name, $placeholder, $value, $label = false, $required = false){
+		if(!empty($cl_wrap)){echo '<div class = "'.$cl_wrap.'">';}
+		
+		if($label){
+			echo '<label for = "'.$id.'">'.$placeholder.'</label>';
 		}
+
+		if($required){
+			echo '<input id = "'.$id.'" type = "'.$type.'" class = "'.$classes.'" name = "'.$name.'" placeholder = "'.$placeholder.'" value = "'.$value.'" required />';
+		}else{
+			echo '<input id = "'.$id.'" type = "'.$type.'" class = "'.$classes.'" name = "'.$name.'" placeholder = "'.$placeholder.'" value = "'.$value.'" />';			
+		}
+	
+		if(!empty($cl_wrap)){echo '</div>';}
+	}
+	
+	public function textarea($id, $classes, $cl_wrap, $name, $placeholder, $value, $label = false, $required = false){
+		if(!empty($cl_wrap)){echo '<div class = "'.$cl_wrap.'">';}
+		
+		if($label){
+			echo '<label for = "'.$id.'">'.$placeholder.'</label>';
+		}
+		
+		if($required){
+			echo '<textarea id = "'.$id.'" class = "'.$classes.'" name = "'.$name.'" placeholder = "'.$placeholder.'" required>'.$value.'</textarea>';
+		}else{
+			echo '<textarea id = "'.$id.'" class = "'.$classes.'" name = "'.$name.'" placeholder = "'.$placeholder.'">'.$value.'</textarea>';	
+		}		
+		
+		if(!empty($cl_wrap)){echo '</div>';}
+	}
+	
+	public function button($type, $classes, $name, $text){
+		echo '<button class = "'.$classes.'" type = "'.$type.'" name = "'.$name.'">'.$text.'</button>';
+	}
+	
+	public function hidden($name, $value){
+		echo '<input type = "hidden" name = "'.$name.'" value = "'.$value.'"/>';
+	}
+	
+	public function checkbox($checked, $name, $cl_wrap, $value){
+		if(!empty($cl_wrap)){echo '<div class = "'.$cl_wrap.'">';}
+		
+		echo '<label>';
+		
+		if($checked == 1){
+			echo '<input type = "checkbox" name = "'.$name.'" checked/>'.$value;
+		}else if($checked == 0){
+			echo '<input type = "checkbox" name = "'.$name.'"/>'.$value;
+		}
+		
+		echo '</label>';
+		
+		if(!empty($cl_wrap)){echo '</div>';}
 	}
 
 	public function FormFinish(){

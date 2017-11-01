@@ -1,11 +1,9 @@
-<form role = "form" method = "POST" action = "" enctype = "multipart/form-data">
-	<div class = "form-group">
-		<label for = "inputName">Название работы</label>
-		<input id = "inputName" class = "form-control" type = "text" name = "PORTFOLIO_NAME" placeholder = "Введите название работы" required>
-	</div>
-	<div class = "form-group">
-		<label for = "inputImage">Изображение работы</label>
-		<input id = "inputImage" class = "form-control" type = "file" name = "PORTFOLIO_IMAGE" placeholder = "Изображение" required/>
-	</div>
-	<button class = "btn btn-primary" type = "submit" name = "PORTFOLIO_ADD">Добавить</button>
-</form>
+<?php
+$addPortfolioForm = new CFormBuilder();
+
+$addPortfolioForm->FormStart("POST", "", true);
+$addPortfolioForm->input("text", "inputName", "form-control", "form-group", "PORTFOLIO_NAME", "Название работы", "", true, true);
+$addPortfolioForm->input("file", "inputImage", "form-control", "form-group", "PORTFOLIO_IMAGE", "Изображение работы", "", true, true);
+$addPortfolioForm->button("submit", "btn btn-primary", "PORTFOLIO_ADD", "Добавить");
+$addPortfolioForm->FormFinish();
+?>
