@@ -69,6 +69,30 @@ class CFormBuilder{
 		if(!empty($cl_wrap)){echo '</div>';}
 	}
 
+	public function select($id, $classes, $cl_wrap, $name, $text, $arOptions, $label = false, $required = false){
+		if(!empty($cl_wrap)){echo '<div class = "'.$cl_wrap.'">';}
+
+		if($label){
+			echo '<label for = "'.$id.'">'.$text.'</label>';
+		}		
+		
+		if($required){
+			echo '<select id = "'.$id.'" class = "'.$classes.'" name = "'.$name.'" required>';
+			foreach($arOptions as $item){
+				echo '<option value = "'.$item["VALUE"].'" '.$item["SELECTED"].'>'.$item["TEXT"].'</option>';
+			}
+			echo '</select>';
+		}else{
+			echo '<select id = "'.$id.'" class = "'.$classes.'" name = "'.$name.'">';
+			foreach($arOptions as $item){
+				echo '<option value = "'.$item["VALUE"].'" '.$item["SELECTED"].'>'.$item["TEXT"].'</option>';
+			}			
+			echo '</select>';			
+		}
+		
+		if(!empty($cl_wrap)){echo '</div>';}	
+	}
+	
 	public function FormFinish(){
 		echo '</form>';
 	}

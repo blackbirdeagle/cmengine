@@ -1,7 +1,7 @@
 <?php
 	require_once($_SERVER["DOCUMENT_ROOT"]."/config/db.php");
 	require_once($_SERVER["DOCUMENT_ROOT"]."/core/user.class.php");
-
+	require_once($_SERVER["DOCUMENT_ROOT"]."/core/formbuilder.class.php");
 	require_once($_SERVER["DOCUMENT_ROOT"]."/admin/authcontrol.php");
 
 	if(isset($_POST["USER_ADD"])){
