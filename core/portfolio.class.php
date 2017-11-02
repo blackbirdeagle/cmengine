@@ -49,9 +49,10 @@ class CPortfolio extends CMySQL{
 		$this->block = $block;
 
 		$fields[0] = array("name", $this->name);
-		$fields[1] = array("image", $this->image);
-		$fields[2] = array("block", $this->block);
-
+		$fields[1] = array("block", $this->block);
+		if($this->image != "")
+			$fields[2] = array("image", $this->image);
+			
 		return parent::UpdateRecord($this->table, $id, $fields);			
 	}	
 	/*Метод удаления работы из портфолио*/
